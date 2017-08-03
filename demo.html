@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<style>
+    input {
+        width: 200px;
+        height: 50px;
+    }
+
+</style>
+<body>
+1. 显示最大最小 <br/>
+<div id="demo1">
+    <input id="date" name="dateName" required min="2017-08-01" max="2017-08-23" type="date"/>
+</div>
+<br/>
+2.显示最大<br/>
+<input type="date" required name="bday" max="1979-12-31"/><br/>
+<br/>
+3.显示最小 <br/>
+<input id="date1" name="dateName" required min="2013-01-01" max="2017-09-23" type="date"/>
+<br/>
+<input type="number" name="quantity" min="1" max="5"/><br/>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script>
+    var now = new Date();
+    var date = new Date(now.getTime() + 15 * 24 * 3600 * 1000);
+    console.log(now)
+    console.log(date)
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var second = date.getSeconds();
+    var startTime = year + '-' + check(month) + '-' + check(day);
+    startTime = startTime.toString();
+    var newInput = '<input id="date" name="dateName" required min="' + startTime + '" max="2017-08-23" type="date"/>';
+    $('#demo1').append(newInput);
+
+    function check(obj) {
+        if (obj < 10) return "0" + "" + obj;
+        else return obj;
+    }
+</script>
